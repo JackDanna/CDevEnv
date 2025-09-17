@@ -1,6 +1,10 @@
 {
   description = "A C Dev Shell";
 
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  };
+
   outputs = { self, nixpkgs }:
   let
     system = "x86_64-linux";
@@ -8,9 +12,12 @@
       inherit system;
       config = {
         allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-          #"vscode-with-extensions"
-          #"vscode"
+          "vscode-with-extensions"
+          "vscode"
           "vscode-extension-ms-vscode-cpptools"
+          "vscode-extension-github-copilot"
+          "vscode-extension-github-copilot-chat"
+          "vscode-extension-mhutchie-git-graph"
         ];
       };
     };
@@ -29,11 +36,13 @@
         gdb
         bashInteractive
         (vscode-with-extensions.override  {
-          vscode = pkgs.vscodium;
+          vscode = pkgs.vscode;
           vscodeExtensions = with pkgs.vscode-extensions; [
             jnoortheen.nix-ide
             mhutchie.git-graph
             ms-vscode.cpptools
+            github.copilot
+            github.copilot-chat
           ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             # {
             #   name = "csharp";
