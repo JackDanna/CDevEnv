@@ -23,12 +23,6 @@
     };
   in
   {
-    packages.${system} = {
-      default = pkgs.writeShellScriptBin "run" ''
-        nix develop -c -- codium .
-      '';
-    };
-
     devShells.${system}.default = pkgs.mkShell rec {
       name = "CDevShell";
       buildInputs = with pkgs; [
