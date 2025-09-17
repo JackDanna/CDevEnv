@@ -34,7 +34,11 @@
           vscodeExtensions = with pkgs.vscode-extensions; [
             jnoortheen.nix-ide
             mhutchie.git-graph
+
             ms-vscode.cpptools
+            #ms-vscode.cpptools-themes
+            ms-vscode.cmake-tools
+
             github.copilot
             github.copilot-chat
           ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
