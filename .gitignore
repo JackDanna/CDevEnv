@@ -1,0 +1,22 @@
+# Compiled object files
+*.o
+
+# Compiled binary files
+main
+
+# Backup files
+*~
+
+# Editor files
+.vscode/
+*.swp
+
+# OS files
+.DS_Store
+
+# CMake and build folders
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
